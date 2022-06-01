@@ -1,0 +1,94 @@
+html{
+    font-size: 2.5vh;
+    font-family: 'Lato', sans-serif;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    height: 85vh;
+}
+.geral{
+    
+    height: 100vh;
+    width: 100vw;
+    background-color: #EBEDF2;
+
+}
+
+.tituloPrincipal{
+
+    display: inline-block;
+    font-family: 'Fredoka One', cursive;
+    font-size: 10vh;
+    color: #231773;
+    -webkit-text-stroke: 0.1rem #EBEDF2;
+    background-color: #4B50BF;
+    justify-content: flex-start;
+    flex-direction: row;
+    padding-bottom: 2vh;
+    padding-right: 2vh;
+    background-size: contain;
+    border-bottom-right-radius: 5vh;
+    border-color: #231773;
+
+}
+
+.inicial{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 30%;
+}
+
+canvas{
+    border: #191346 solid 1px;
+    max-width: 1200px;
+    max-height: 800px;
+    margin-top: 3%;
+    
+}
+
+.jogo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+.btn:hover{
+    background-color: #231773;
+    transition: all 0.5s;
+    transform: scale(1.05);
+}
+
+.btnsecundario:hover{
+    transition: all 0.5s;
+    transform: scale(1.05);
+    background-color: #4b51bfd3;
+    color:#191346 ;
+}
+
+.btn{
+    font-family: 'Lato', sans-serif;
+    color: #EBEDF2;
+    font-weight: 700;
+    font-size: 1rem;
+    height: 10vh;
+    width: 15vw;
+    min-height: 6vh;
+    min-width: 10vw;
+    padding: 2vh;
+    display: block;
+    margin: auto;
+    margin-bottom: 3vh;
+    background-color: #4B50BF;
+    border-radius: 15px;
+}
+.btnsecundario{
+    background-color:#ACB0F2;
+    color: #231773; 
+}
+
+.esconder{
+    display: none;
+}
