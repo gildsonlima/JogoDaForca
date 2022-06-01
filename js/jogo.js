@@ -4,10 +4,13 @@ var inicial = document.querySelector('#inicial')
 var jogo = document.querySelector('#jogo');
 var tela = document.querySelector('canvas');
 var pincel = tela.getContext('2d');
-var tecla 
-var inicioTexto
+var tecla;
+var inicioTexto;
 var contErros = 0;
 var contAcertos = 0;
+var letrasDigitadas = [];
+var inicioErradas = 100;
+var botaReniciar = document.querySelector('#botaoreniciar')
 
 var palavras = ['coco','celular','alura','monitor','cerveja'];
 
@@ -31,23 +34,26 @@ function fazerLinhas(inicio , numeroDeLinhas){
     }   
 }
 
-function fazerLetras(inicio,numeroDeLinhas){
+function fazerLetras(inicio,numeroDeLinhas,palavra){
     let x = 0;
     for (let i = 0; i < numeroDeLinhas; i++ ) {
         let letra = palavra[i];
         if(isNaN(tecla)){
             if(testarLetras(tecla,letra)){
-            pincel.font = '50px Arial';
+            pincel.font = '50px Fredoka One';
             pincel.fillText(tecla, inicio, 390);
             contAcertos ++;
             }else{
-            x++;
-            }
+                x++;
+            } 
         inicio = inicio +65;
         }
     }
     if(x == palavra.length){
         calcularErros();
+        pincel.font = '20px Fredoka One';
+        pincel.fillText(tecla, 100 , inicioErradas);
+        inicioErradas += 20;
     }
 }
 
@@ -57,8 +63,7 @@ function testarLetras(tecla,letra){
         }return false;
     }
 
-
-botaoComeca.addEventListener('click', function(){
+function jogar(){
     inicial.classList.add('esconder');
     jogo.classList.remove('esconder');
     let palavra = palavras[sorteio].toUpperCase();
@@ -69,11 +74,21 @@ botaoComeca.addEventListener('click', function(){
     document.body.addEventListener('keypress',function(event){
         let key = event.key;
         tecla = key.toUpperCase();
-        fazerLetras(inicioTexto,numeroDeLinhas);
+        if(!(letrasDigitadas.includes(tecla))){
+        fazerLetras(inicioTexto,numeroDeLinhas,palavra);
+        }
+        letrasDigitadas.push(tecla);
+        if(contErros>=8){
+        pincel.font = '40px Fredoka One';
+        pincel.fillStyle = 'red'
+        pincel.fillText('FIM DE JOGO', 360 , 450);
+        }
+        if(contAcertos>=palavra.length){
+            pincel.font = '40px Fredoka One';
+            pincel.fillText('VITORIA', 410 , 450);
+        }
     })
-    
-
-});
+}
 
 
 
@@ -126,3 +141,7 @@ if(contErros == 8){
 }
 
 }
+botaoComeca.addEventListener('click', jogar)
+botaReniciar.addEventListener('click', () =>{
+    document.location.reload();
+})
