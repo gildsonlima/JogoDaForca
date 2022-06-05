@@ -85,6 +85,7 @@ function jogar(){
         }
         if(contAcertos>=palavra.length){
             pincel.font = '40px Fredoka One';
+            pincel.fillStyle = 'green'
             pincel.fillText('VITORIA', 410 , 450);
         }
     })

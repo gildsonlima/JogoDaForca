@@ -89,6 +89,15 @@ canvas{
     background-color:#ACB0F2;
     color: #231773; 
 }
+.campopalavra{
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    border-radius: 1vh;
+    width: 13vw;
+    margin: auto;
+    margin-bottom: 3vh;
+    padding: 2vh;
+}
 
 .esconder{
     display: none;
